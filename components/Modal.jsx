@@ -17,7 +17,7 @@ const ModalContainer = styled(View)`
     border-radius: 12px;
     align-items: center;
     background-color: white;
-    elevation: 5;
+    elevation: 2;
 `
 
 const Modal = ({ children, onClose, visible }) => (

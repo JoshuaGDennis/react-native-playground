@@ -1,34 +1,29 @@
-import Modal from './components/Modal'
-import React, { useState } from 'react';
-import Button from './components/Button';
-import { Text, View } from 'react-native';
-import styled from 'styled-components/native';
+import 'react-native-gesture-handler';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-const StyledView = styled(View)`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  justify-content: center;
-`
+import HomeScreen from './screens/HomeScreen'
+import AnotherScreen from './screens/AnotherScreen'
 
-const StyledText = styled(Text)`
-  display: flex;
-  margin-bottom: 10px;
-`
+const Stack = createStackNavigator()
 
 const App = () => {
-
-  const [ showModal, setShowModal ] = useState(false)
-
   return (
-    <StyledView>
-      <Button text="Open modal" onPress={() => setShowModal(true)} />
-      <Modal onClose={() => setShowModal(false)} visible={showModal}>
-        <Text>HERES SOME STUFF</Text>
-      </Modal>
-      
-    </StyledView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Welcome' }}
+        />
+        <Stack.Screen
+          name="Another"
+          component={AnotherScreen}
+          options={{ title: 'Another screen' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
